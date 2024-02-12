@@ -20,6 +20,16 @@ module.exports = {
             res.status(200).send(dbRes[0])
         })
     },
+    getCities : (req, res) => {
+        sequelize.query(`select city_id, cities.name as city,
+        countries.country_id, countries.name as country from 
+        cities join countries
+        on cities.city_id = countries.country_id;`)
+        .then( (dbRes) => {
+            res.status(200).send(dbRes[0])
+        })
+    }
+    ,
     
     seed: (req, res) => {
         sequelize.query(`
