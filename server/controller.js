@@ -30,6 +30,10 @@ module.exports = {
         })
     }
     ,
+    deleteCity : (req, res) => {
+        const { id } =  req.params;
+        sequelize.query(`delete from cities where city_id = ${id}`)
+    },
     
     seed: (req, res) => {
         sequelize.query(`
